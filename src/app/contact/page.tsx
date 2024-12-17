@@ -2,6 +2,7 @@ import ContactForm from '@/components/contact/ContactForm'
 import { baseURL } from '../../lib/meta'
 import { imgMapUrl } from '../../lib/utils'
 import type { Metadata } from 'next'
+import { Providers } from '@/StoreProvider'
 
 const defaultImgMapUrl = await imgMapUrl()
 export const metadata: Metadata = {
@@ -28,11 +29,13 @@ export const metadata: Metadata = {
 
 export default function contact() {
   return (
-    <section id="child-page">
-      <article className="generic-content lg:max-w-[700px] w-full h-full mx-auto my-6 px-4">
-        <h1 className="text-2xl lg:text-4xl mb-4">Contact</h1>
-        <ContactForm />
-      </article>
-    </section>
+    <Providers>
+      <section id="page-contact">
+        <article className="generic-content lg:max-w-[700px] w-full h-full mx-auto my-6 px-4">
+          <h1 className="text-2xl lg:text-4xl mb-4">Contact</h1>
+          <ContactForm />
+        </article>
+      </section>
+    </Providers>
   )
 }

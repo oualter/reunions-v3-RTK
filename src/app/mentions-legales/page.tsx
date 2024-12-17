@@ -3,6 +3,7 @@ import BlockRendererClient from '@/components/BlockRendererClient'
 import { baseURL } from '../../lib/meta'
 import { imgMapUrl } from '../../lib/utils'
 import type { Metadata } from 'next'
+import { Providers } from '@/StoreProvider'
 
 const defaultImgMapUrl = await imgMapUrl()
 export const metadata: Metadata = {
@@ -38,13 +39,15 @@ export default async function mentionsLegales() {
       const { Titre, Contenu } = body.data.attributes
 
       return (
-        <section id="child-page">
-          <article className="generic-content lg:max-w-[700px] mx-auto my-6 h-full px-4 legalmentions">
-            <h1 className="text-2xl lg:text-4xl mb-4">{Titre}</h1>
-            <BlockRendererClient content={Contenu} />
-          </article>
-          <SideBar />
-        </section>
+        <Providers>
+          <section id="child-page">
+            <article className="generic-content lg:max-w-[700px] mx-auto my-6 h-full px-4 legalmentions">
+              <h1 className="text-2xl lg:text-4xl mb-4">{Titre}</h1>
+              <BlockRendererClient content={Contenu} />
+            </article>
+            <SideBar />
+          </section>
+        </Providers>
       )
     } else {
       if (response.status === 404) throw new Error('404, Not found')

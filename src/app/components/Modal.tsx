@@ -12,6 +12,7 @@ import xss from 'xss'
 import { TwitterShare } from 'react-share-kit'
 import { useRouter } from 'next/navigation'
 
+
 const Modal = ({
   isParallelRoute,
   children,
@@ -49,6 +50,13 @@ const Modal = ({
     ? children[2].props.children.props.content
     : null
   // console.log('displayContent => ', displayContent)
+
+  // const isGinkgo = children[3].props.children
+  //   ? children[3].props.children
+  //   : null
+  // console.log('childrennn isGinkgo => ', isGinkgo)
+
+
 
   // Au cas où le displayContent soit un tableau à plus d'1 élément, on joint chaque élément entrecoupé d'un <br />
   const contentToDisplay = displayContentWithLBFunction(

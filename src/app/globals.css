@@ -326,17 +326,16 @@ header nav#chapters > p {
 #sidebar-navigation > ul {
   position: fixed;
 }
-
-form > div {
+#page-contact form > div {
   @apply flex flex-col gap-2;
 }
-input,
-textarea,
-button {
+#page-contact input,
+#page-contact textarea,
+#page-contact button {
   @apply shadow-md px-6 py-2 border border-slate-300;
 }
-button {
-  @apply max-w-32 mx-auto bg-slate-500 text-white
+#page-contact button {
+  @apply max-w-32 mx-auto bg-slate-500 text-white;
 }
 
 #headlessui-portal-root {
@@ -530,4 +529,28 @@ main > *:not(section) {
 .legalmentions *:nth-child(5),
 .legalmentions *:nth-child(6) {
   margin: 0;
+}
+
+#ginkgo-counter {
+  position: fixed;
+  margin: 1rem 0 0 2rem;
+  border-width: 2px;
+  border-color: grey;
+  border-style: inset;
+  padding: 0.5rem 1rem;
+}
+.lastAdded {
+  animation: ginkgoDisplay 2s ease 0s 4 normal forwards;
+}
+@keyframes ginkgoDisplay {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+
+  25%,
+  75% {
+    opacity: 0;
+  }
 }

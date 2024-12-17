@@ -8,7 +8,7 @@ import type {
 } from '@/typescript/types'
 
 export const CACHE_TAG_REUNION = 'reunions'
-const CMS_URL = process.env.CMS_URL
+export const CMS_URL = process.env.CMS_URL
 
 export async function GetMicroFictions() {
   const { data } = await fetchMF('api/microfictions')
@@ -75,10 +75,8 @@ export async function GetPhotos() {
   }
 }
 
-async function fetchMF(reqApiEntryPoint: string) {
-  // const url = `${CMS_URL}/api/microfictions?` + { encodeValuesOnly: true }
+export async function fetchMF(reqApiEntryPoint: string) {
   const url = `${CMS_URL}/${reqApiEntryPoint}?populate=*`
-  // console.log('params URL => ', params)
   const response = await fetch(url)
   if (!response.ok) {
     if (response.status === 404) {
@@ -88,32 +86,4 @@ async function fetchMF(reqApiEntryPoint: string) {
   }
   return await response.json()
 }
-/*
-export async function getAllItems(reqApiEntryPoint) {
-  const response = await fetch(`${CMS_URL}/${reqApiEntryPoint}`)
-  const data = await response.json()
 
-  console.log('getAllItems data => ', await data.data)
-  const tempData = await data.data
-
-  // console.log('getAllItems data => ', tempData)
-
-  const fileterdDate = await tempData.map((item) => {
-    // console.log('ITEM => ', item)
-    let { Source } = item.attributes
-    // console.log('Source => ', Source)
-    return 'allo'
-  })
-
-  // const events = []
-
-  // for (const key in data) {
-  //   events.push({
-  //     id: key,
-  //     ...data[key],
-  //   })
-  // }
-
-  // return events
-}
-*/

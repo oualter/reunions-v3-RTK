@@ -1,14 +1,7 @@
 {
   "compilerOptions": {
-    // "target": "es5",
-    // "useDefineForClassFields": true,
-    // "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "target": "es2020",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     // "strict": true,
@@ -27,15 +20,35 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/app/*"
-      ]
+      "@/*": ["./src/app/*"]
     }
-    // "baseUrl": "src/*",
-    // "paths": {
-    //   "@/components/*": ["components/*"]
-    // }
   },
+  // "compilerOptions": {
+  //   "allowJs": true,
+  //   "allowSyntheticDefaultImports": true,
+  //   "checkJs": true,
+  //   "declaration": true,
+  //   "emitDeclarationOnly": false,
+  //   "esModuleInterop": true,
+  //   "forceConsistentCasingInFileNames": true,
+  //   "isolatedModules": true,
+  //   "jsx": "react-jsx",
+  //   "module": "NodeNext",
+  //   "moduleResolution": "NodeNext",
+  //   "noEmit": false,
+  //   "noEmitOnError": true,
+  //   "noErrorTruncation": true,
+  //   "noFallthroughCasesInSwitch": true,
+  //   "outDir": "./dist",
+  //   "resolveJsonModule": true,
+  //   "skipLibCheck": true,
+  //   "strict": true,
+  //   "target": "ESNext",
+  //   "useDefineForClassFields": true,
+  //   "useUnknownInCatchVariables": true,
+  //   "verbatimModuleSyntax": true
+  // },
+  // "include": ["src"],
   // "include": [
   //   "new-types.d.ts",
   //   "next-env.d.ts",
@@ -50,8 +63,9 @@
     ".next/types/**/*.ts",
     "src/app/components/Modal.tsx.backup",
     "src/app/components/share.jsx",
-    "dist/types/**/*.ts"
-, "src/app/not-found.tsx"  ],
+    "dist/types/**/*.ts",
+    "src/app/not-found.tsx"
+  ],
   "exclude": [
     "node_modules",
     "src/app/components/Modal.tsx.backup"

@@ -19,6 +19,11 @@ type ConfettisType = {
 // console.log('je suis le fichier confettis.tsx')
 
 const Confettis = ({ isGingkoBiloba }) => {
+  // console.log('isGingkoBiloba => ', isGingkoBiloba)
+  // const dispatch = useDispatch()
+  // if (isGingkoBiloba) {
+  //   dispatch(superIncrement())
+  // }
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadAll(engine)
@@ -165,11 +170,11 @@ const Confettis = ({ isGingkoBiloba }) => {
   return (
     <>
       {isGingkoBiloba && (
-        <Particles
-          id="tsparticles"
-          particlesLoaded={particlesLoaded}
-          options={options}
-        />
+          <Particles
+            id="tsparticles"
+            particlesLoaded={particlesLoaded}
+            options={options}
+          />
       )}
     </>
   )

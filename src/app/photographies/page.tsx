@@ -4,13 +4,11 @@ import PinsList from '@/components/PinsList'
 import SideBar from '@/components/SideBar'
 import { GetPhotos } from '../../lib/microfictions'
 import type { Metadata } from 'next'
-
-
+import { Providers } from '@/StoreProvider'
 
 export const dynamicParams = false
 
 export async function generateMetadata(): Promise<Metadata> {
-
   const defaultImgMapUrl = await imgMapUrl()
   return {
     title: `Photographies de la place de la Réunion Paris 20e`,
@@ -48,13 +46,15 @@ export default async function showPhotos({ params }) {
   const { photosMF } = await photos
 
   return (
-    <section className="map-page slug-page flex flex-wrap">
-      <h1 className="grow-1 w-full flex-none">Photographies</h1>
-      <article className="img-placeholder image-wrapper lg:w-[1080px] mx-auto relative mix-blend-darken ">
-        <ImagePlaceHolder />
-        <PinsList items={photosMF} pintype="photos" />
-      </article>
-      <SideBar />
-    </section>
+    <Providers>
+      <section className="map-page slug-page flex flex-wrap">
+        <h1 className="grow-1 w-full flex-none">Photographies</h1>
+        <article className="img-placeholder image-wrapper lg:w-[1080px] mx-auto relative mix-blend-darken ">
+          <ImagePlaceHolder />
+          <PinsList items={photosMF} pintype="photos" />
+        </article>
+        <SideBar />
+      </section>
+    </Providers>
   )
 }

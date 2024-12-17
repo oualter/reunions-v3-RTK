@@ -7,6 +7,8 @@ import NavBar from '@/components/NavBar'
 import FooterBar from '@/components/FooterBar'
 import SiteHeader from '@/components/SiteHeader'
 
+
+
 type LayoutProps = {
   children: ReactNode
   modal: React.ReactNode
@@ -59,20 +61,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children, modal }: LayoutProps) {
   return (
-    <html lang="fr">
-      <body className="container flex flex-col min-h-dvh lg:min-h-screen mx-auto pb-2">
-        <header className="sticky top-0 w-full sm:py-3 py-1 sm:px-9 px-2 shrink">
-          <div className="sm:flex sm:justify-stretch ">
-            <SiteHeader />
-            <NavBar />
-          </div>
-        </header>
-        <main id="main-container" className="grow overflow-hidden">
-          {children}
-          {modal}
-        </main>
-        <FooterBar />
-      </body>
-    </html>
+      <html lang="fr">
+        <body className="container flex flex-col min-h-dvh lg:min-h-screen mx-auto pb-2">
+          <header className="sticky top-0 w-full sm:py-3 py-1 sm:px-9 px-2 shrink">
+            <div className="sm:flex sm:justify-stretch ">
+              <SiteHeader />
+              <NavBar />
+            </div>
+          </header>
+          <main id="main-container" className="grow overflow-hidden">
+            {children}
+            {modal}
+          </main>
+          <FooterBar />
+        </body>
+      </html>
   )
 }

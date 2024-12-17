@@ -2,6 +2,7 @@ import BlockRendererClient from '@/components/BlockRendererClient'
 import Modal from '@/components/Modal'
 import { GetMicroFictions } from '../../../../lib/microfictions'
 import Confettis from '@/components/Confettis'
+import { Providers } from '@/StoreProvider'
 
 export const dynamicParams = false
 
@@ -56,16 +57,18 @@ export default async function MicrofictionModal({
   // await new Promise((resolve) => setTimeout(resolve, 3000))
   return (
     <>
-      <Modal>
-        <div>{finalDisplayDate}</div>
-        <div>{Heure}</div>
-        <div>
-          <BlockRendererClient content={Texte_microfiction} />
-        </div>
-        <div>{GingkoBiloba}</div>
-        <div>{linkToShare}</div>
-      </Modal>
-      <Confettis isGingkoBiloba={GingkoBiloba} />
+      <Providers>
+        <Modal>
+          <div>{finalDisplayDate}</div>
+          <div>{Heure}</div>
+          <div>
+            <BlockRendererClient content={Texte_microfiction} />
+          </div>
+          <div>{GingkoBiloba}</div>
+          <div>{linkToShare}</div>
+        </Modal>
+        <Confettis isGingkoBiloba={GingkoBiloba} />
+      </Providers>
     </>
   )
 }

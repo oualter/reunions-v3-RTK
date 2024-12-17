@@ -10,6 +10,17 @@ import Image from 'next/image'
 
 import { type PinPropsType } from '@/typescript/types'
 
+import type { RootState } from '../../store/index'
+// import { useSelector, useDispatch } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import {
+  decrement,
+  increment,
+  superIncrement,
+} from '../../store/features/counterGinkgo/counterGinkgoSlice'
+
+// export const dynamic = 'force-dynamic'
+
 const Pin = (props: PinPropsType) => {
   // console.log('pin props => ', props)
   const {
@@ -19,6 +30,7 @@ const Pin = (props: PinPropsType) => {
     Heure,
     id,
     isPhoto,
+    GingkoBiloba,
     Texte_alternatif,
     sourceThumbImg,
   } = props
@@ -32,6 +44,8 @@ const Pin = (props: PinPropsType) => {
 
   const pinYear = Date ? Date.split('/')[2] : undefined
 
+  const dispatch = useAppDispatch()
+
   return (
     <>
       {pinYear && (
@@ -42,12 +56,21 @@ const Pin = (props: PinPropsType) => {
                 scroll={false}
                 href={`/microfiction/${id}`}
                 className="pin"
+                // data-ginkgo={GingkoBiloba}
                 style={{
                   width: '10px',
                   height: '10px',
                   top: `${coordY}%`,
                   left: `${coordX}%`,
                   textIndent: '-100000px',
+                }}
+                onClick={(e) => {
+                  if (GingkoBiloba) {
+                    // e.preventDefault()
+                    // @ts-ignore
+                    // dispatch(increment({MFid:id}))
+                    dispatch(increment(id))
+                  }
                 }}
               >
                 Microfiction place de la Réunion du {Date} à {Heure}

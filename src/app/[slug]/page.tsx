@@ -5,6 +5,9 @@ import PinsList from '@/components/PinsList'
 import SideBar from '@/components/SideBar'
 import { GetMicroFictions } from '../../lib/microfictions'
 import { chapitres } from '@/data'
+// import CounterGinkgo from '../store/features/counterGinkgo/counterGinkgo'
+import CounterGinkgo from '../../store/features/counterGinkgo/counterGinkgo'
+import { Providers } from '@/StoreProvider'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
@@ -137,13 +140,16 @@ export default async function showFictions({ params }) {
   })
 
   return (
-    <section className="map-page slug-page flex flex-wrap">
-      <h1 className="grow-1 w-full flex-none">{pageTitle}</h1>
-      <article className="img-placeholder image-wrapper lg:w-[1080px] mx-auto relative mix-blend-darken ">
-        <ImagePlaceHolder />
-        <PinsList items={microfictionsFiltered} />
-      </article>
-      <SideBar />
-    </section>
+    <Providers>
+      <section className="map-page slug-page flex flex-wrap">
+        <h1 className="grow-1 w-full flex-none">{pageTitle}</h1>
+        <article className="img-placeholder image-wrapper lg:w-[1080px] mx-auto relative mix-blend-darken ">
+          <ImagePlaceHolder />
+          <PinsList items={microfictionsFiltered} />
+        </article>
+        <SideBar />
+        <CounterGinkgo />
+      </section>
+    </Providers>
   )
 }
